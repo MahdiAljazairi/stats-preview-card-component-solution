@@ -1,0 +1,209 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;700);
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-underline-position: from-font;
+}
+
+body {
+  display: grid;
+  grid-template: "...          ....          ..." minmax(5.5rem,1fr)
+                 "...          card          ..." minmax(auto,27.9rem)
+                 "...          attr          ..." 1fr
+                / 1fr   min(91.3%,69.4rem)   1fr;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+  color: rgba(255,255,255,.75); /* White 75% */
+  background-color: #090b1a; /* Very Dark Blue */
+}
+
+a {
+  color: currentColor;
+  outline-offset: .4em;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+a:active {
+  opacity: .6;
+}
+
+img, picture {
+  display: block;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, .figure { /* Why include 'em all anyway? */
+  color: white;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.255rem; /* SUPER-ULRTA-FINE-TUNING! */
+  margin-bottom: .7em;
+}
+
+p {
+  font-size: .943rem; /* i.e. ~15px if 1rem = 16px */
+  line-height: 1.66;
+}
+
+.accent {
+  color: #aa5cdb; /* Soft Violet */
+}
+
+.card {
+  grid-area: card;
+  container-type: inline-size;
+  position: relative;
+  isolation: isolate; /* Create a new stacking context without side effects */
+  border-radius: .5rem;
+  overflow: hidden;
+  background: #1b1938; /* Dark Desaturated Blue */
+}
+
+.card picture {
+  background: #aa5cdb; /* Soft Violet */
+  position: absolute;
+  right: 0;
+  top: 1px; bottom: 1px; /* Never ask why.. */
+  z-index: -1;
+  overflow: hidden;
+  transform:
+    translateX(
+      calc(((100cqw - 35.65rem) - 100%) * -.22) /* See `background-position` math */
+    );
+}
+
+.card picture img {
+  mix-blend-mode: multiply;
+  opacity: .8;
+  width: 100%;
+}
+
+.card .wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 4.45rem 4rem 4rem 4.45rem;
+  width: 33rem;
+  height: 100%;
+  background: #1b1938; /* Dark Desaturated Blue */
+}
+
+.card .wrapper p {
+  max-width: 37ch; /* i.e. 37 digit zero "0" characters */
+}
+
+.card .stats {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4rem;
+  row-gap: 1.83rem;
+  margin-top: auto;
+  letter-spacing: .08rem;
+}
+
+.card .stats > :last-child {
+  margin-left: -.4rem; /* Lust for pixel-perfection, essentially.. */
+}
+
+.card .stats .figure {
+  font-size: 1.43rem;
+  margin-bottom: .5rem;
+}
+
+.card .stat-heading {
+  text-transform: uppercase;
+  font-size: .75rem;
+  color: rgba(255,255,255,.6); /* White 60% */
+}
+
+.attribution {
+  grid-area: attr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0 2rem;
+  color: white;
+  font-size: .8rem;
+}
+
+/*------------------------------------------------------------*/
+
+@media (max-width: 880px) {
+  body {
+    grid-template-columns: 1fr min(91.3%,30rem) 1fr;
+  }
+  
+  .card {
+    height: min-content;
+  }
+  
+  .card picture {
+    position: static;
+    transform: none;
+  }
+  
+  .card .wrapper {
+    width: auto;
+    height: auto;
+    padding: 2.5rem 3rem 3rem;
+    text-align: center;
+  }
+  
+  .card .wrapper h1 {
+    font-size: 2rem;
+    margin-bottom: 1.2em;
+  }
+  
+  .card .wrapper p {
+    margin: -.25rem auto 0;
+  }
+  
+  .card .stats {
+    justify-content: space-around;
+    column-gap: 2.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: .25rem;
+  }
+  
+  .card .stats > * {
+    flex-basis: calc((20rem - 100%) * 9999); /* Heydon's "Flexbox Holy Albatross" */
+  }
+  
+  .card .stats > :last-child {
+    margin-left: -.1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .card .wrapper {
+    padding: 2.5rem 2rem 2rem;
+  }
+  
+  .card .wrapper h1 {
+    font-size: 1.75rem;
+    line-height: 1.15;
+    margin-bottom: .7em;
+  }
+}
+
+@media (max-width: 400px) {
+  .attribution {
+    font-size: .7rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .attribution {
+    font-size: .6rem;
+  }
+}
+
+
+
